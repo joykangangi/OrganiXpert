@@ -5,7 +5,7 @@
 - [Python](https://www.python.org/)
 - [Pip](https://pypi.org/project/pip/)
 - [Virtualenv](https://virtualenv.pypa.io/en/latest/)
-- [PostgreSQL](https://www.postgresql.org/)
+- [SQLite3](https://www.sqlite.org/index.html)
 
 ### Installation
 1. Clone the repository
