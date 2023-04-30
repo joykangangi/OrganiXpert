@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'compressor',
     'users',
+    'farm',
 ]
 
 MIDDLEWARE = [
@@ -137,8 +138,8 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
-LOGIN_REDIRECT_URL = '/'
-ACCOUNT_FORMS = {'signup': 'users.forms.CustomSignupForm'}
+LOGIN_REDIRECT_URL = '/farm/farm-detail-registration/'
+
 
 
 # Internationalization
@@ -157,6 +158,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATIC_ROOT = BASE_DIR / 'static'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
