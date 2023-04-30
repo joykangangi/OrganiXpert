@@ -48,7 +48,8 @@ def upload(request):
         nitrogen = str(round(float(nitrogen) * 2.24 * 0.4047, 2))
         phosphorus = str(round(float(phosphorus) * 2.24 * 0.4047, 2))
         potassium = str(round(float(potassium) * 2.24 * 0.4047, 2))
-        Farm.objects.create(farm_owner=request.user, soil_nitrogen_level=nitrogen, soil_phosphorus_level=phosphorus, soli_potassium_level=potassium)
+        farm = Farm.objects.get(farm_owner=request.user)
+        farm.update(soil_nitrogen_level=nitrogen, soil_phosphorus_level=phosphorus, soli_potassium_level=potassium)
         return render(request, 'upload_success.html', {'pdf_url': pdf_file_url})
     return render(request, 'upload.html')
 
