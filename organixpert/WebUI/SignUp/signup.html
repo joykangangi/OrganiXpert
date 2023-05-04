@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OrganiXpert Sign Up</title>
+    <link rel="stylesheet" href="./trialcss.css">
+    <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js" defer></script>
+    <script src="./validations.js" defer></script>
+</head>
+
+<body>
+  <div class="container">
+  <div class="form-box">
+    <h1 id="title">Sign Up Here</h1>
+    <form action="./signup_process.php" method="post" id="signup" novalidate>
+      <div class="input-group">
+
+          <div class="input-field" id="nameField">
+              <i class="fa-solid fa-user"></i>
+              <input type="text" placeholder="Full Name" name="name" id="name">
+          </div>
+          <div class="input-field">
+              <i class="fa-solid fa-envelope"></i>
+              <input type="email" placeholder="Email" name="email" id="email">
+          </div>
+          <div class="input-field">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" placeholder="Password" name="password" id="password">
+        </div>
+        <p class="cont">If you have an account <a href="./login.php">Click Here</a> to log in.</p>
+  </div>
+    
+  </div>
+
+  <form>
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="email" required><br>
+
+      <label for="name">Name:</label><br>
+      <input type="text" id="name" name="name" required><br>
+
+      <label for="soil_type">Soil Type:</label><br>
+      <select id="soil_type" name="soil_type" required>
+        <option value="">--Select Soil Type--</option>
+        <option value="loam">Loam</option>
+        <option value="sandy">Sandy</option>
+        <option value="clay">Clay</option>
+        <option value="red">Red</option>
+        <option value="black">Black</option>
+      </select><br>
+
+      <label for="crop_type">Crop Type:</label><br>
+      <select id="crop_type" name="crop_type" required>
+        <option value="">--Select Crop Type--</option>
+        <option value="maize">Maize</option>
+      </select><br>
+
+      <label for="farm_location">Farm County:</label><br>
+      <select id="farm_location" name="farm_location" required>
+        <option value="">--Select Farm Location--</option>
+        <option value="nairobi">Nairobi</option>
+        <option value="kiambu">Kiambu</option>
+      </select><br>
+
+      <label for="farm_size">Farm Size:</label><br>
+      <select id="farm_size" name="farm_size" required>
+        <option value="">--Select Farm Size--</option>
+        <option value="1">0-1 acre</option>
+        <option value="2">2-3 acres</option>
+        <option value="5">4-5 acres</option>
+        <option value="6">6-8 acres</option>
+      </select><br>
+
+      <label for="seed_variety">Seed Variety:</label><br>
+      <select id="seed_variety" name="seed_variety" required>
+        <option value="">--Select Maize Seed Variety--</option>
+        <option value="511">H511</option>
+        <option value="622">H622</option>
+        <option value="632">H632</option>
+      </select><br>
+
+      <label for="crop_nutrients">Crop Nutrients:</label><br>
+      <textarea id="crop_nutrients" name="crop_nutrients"></textarea><br>
+
+      <button type="submit">Sign Up</button>
+    </form>
+  </body>
+</html>
