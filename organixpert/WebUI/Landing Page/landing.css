@@ -91,9 +91,6 @@ header h1 {
   max-height: 100%;
 }
 
-main {
-  background-color: #AF7A1F;
-}
 .card {
   display: flex;
   justify-content: center;
