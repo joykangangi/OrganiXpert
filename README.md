@@ -9,12 +9,13 @@
 
 ### Installation
 1. Clone the repository
-2. Create a virtual environment, using `virtualenv` or `venv` run `virtualenv venv` or `python3 -m venv venv`
-3. Install the requirements `pip install -r requirements.txt`
-4. Create an `env` file in the root directory i.e. `organixpert/` and copy the contents of `env.example` to it
-5. Run the migrations `python manage.py migrate`
+2. Create a virtual environment, using `virtualenv` or `venv` run `virtualenv venv` or `python3 -m venv venv` 
+3. Activate your virtual environment `source venv/bin/activate` or cd into the directory and run `venv\Scripts\activate`
+4. Install the requirements `pip install -r requirements.txt`
+5. Create an `env` file in the root directory i.e. `organixpert/` and copy the contents of `env.example` to it
+6. Run the migrations `python manage.py migrate`
 6. Create a superuser `python manage.py createsuperuser`
-7. Run the server `python manage.py runserver`
+8. Run the server `python manage.py runserver`
 
 ### Contributing
 1. Fork the repository
