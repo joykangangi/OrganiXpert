@@ -4,6 +4,9 @@ from django.core.files.storage import FileSystemStorage
 from PyPDF2 import PdfReader
 from .models import Farm, Crops
 from .forms import FarmDetailRegistrationForm
+import os, pickle
+from .preprocessing import preprocess_before_inference
+from .number_of_bags import determine_number_of_bags
 
 @login_required
 def farm_details_registration(request):
@@ -60,9 +63,27 @@ def get_recommendation(request):
     nitrogen = farm.soil_nitrogen_level
     phosphorus = farm.soil_phosphorus_level
     potassium = farm.soli_potassium_level
+    variety = farm.seed_variety
+    soil_content = [nitrogen, phosphorus, potassium]
     crop = farm.crop_grown
     soil_type = farm.soil_type
-    crop_requirements = Crops.objects.get(crop_type=crop).filter(seed_variety=farm.seed_variety)
-    # inference machine learning model
-    return render(request, 'recommendation.html')
+    crop_requirements = Crops.objects.get(crop_type=crop).filter(seed_variety=variety)
+    nitrogen_required = crop_requirements.nitrogen_requirement
+    phosphorus_required = crop_requirements.phosphorus_requirement
+    potassium_required = crop_requirements.potassium_requirement
+    nutrient_requirements = [nitrogen_required, phosphorus_required, potassium_required]
+    # prepare the data for inferencing
+    data = [[soil_type, crop, nitrogen, potassium, phosphorus]]
+    data = preprocess_before_inference(data)
+    # load the model from disk using pickle module
+    model_path = os.path.abspath('../../ML_Development/Models')
+    os.chdir(model_path)
+    with open('Organic_Fertilizer_Recommender.pkl', 'rb') as file:
+        model = pickle.load(file)
+    # make predictions
+    prediction = model.predict(data)
+    organic_fertilizers = ['Safi Biochar', 'Safi Sarvi Planting Fertilizer', 'Safi Sarvi Topper']
+    predicted_fertilizer = organic_fertilizers[prediction]
+    bags = determine_number_of_bags(nutrient_requirements, soil_content, predicted_fertilizer)
+    return render(request, 'recommendation.html', {'fertilizer': predicted_fertilizer, 'bags': bags})
     

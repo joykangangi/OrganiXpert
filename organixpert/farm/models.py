@@ -8,6 +8,9 @@ class Crops(models.Model):
     phosphorus_requirement = models.CharField(max_length=50, blank=True)
     potassium_requirement = models.CharField(max_length=50, blank=True)
     
+    def __str__(self):
+        return self.seed_variety
+    
 
 class Farm(models.Model):
     farm_owner = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -19,5 +22,8 @@ class Farm(models.Model):
     soil_nitrogen_level = models.CharField(max_length=50, blank=True)
     soil_phosphorus_level = models.CharField(max_length=50, blank=True)
     soli_potassium_level = models.CharField(max_length=50, blank=True)
+    
+    def __str__(self):
+        return self.farm_owner.username
     
     
