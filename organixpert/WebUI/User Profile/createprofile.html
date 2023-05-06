@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Farm Details</title>
+    <link rel="stylesheet" href="../SignUp/signup.css">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-box">
+            <h1 id="title">Farm Details</h1>
+            <form action="#" method="post" id="#" novalidate>
+
+
+                <div class="flex flex-row items-center mb-4">
+                <label for="soiltype" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    <b>Select Soil Type</b></label>
+                <select id="soiltype"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option selected>--Select Soil Type--</option>
+                    <option value="loam">Loam</option>
+                    <option value="sandy">Sandy</option>
+                    <option value="clay">Clay</option>
+                    <option value="red">Red</option>
+                    <option value="black">Black</option>
+                </select>
+                </div>
+
+                <div class="flex flex-row items-center mb-4">
+                <label for="croptype" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                   <b>Select Crop Type</b></label>
+                <select id="croptype"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option selected>--Select Crop Type--</option>
+                    <option value="maize">Maize</option>
+                </select>
+                </div>
+
+                <div class="flex flex-row items-center mb-4">
+                <label for="farmlocation" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                   <b> Select Farm (Constituency)</b></label>
+                <select id="farmlocation"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option selected>--Select Farm Location--</option>
+                    <option value="gSouth">Gatundu South</option>
+                    <option value="gNorth">Gatundu North</option>
+                    <option value="juja">Juja</option>
+                    <option value="thika">Thika Town</option>
+                    <option value="ruiru">Ruiru</option>
+                    <option value="githunguri">Githunguri</option>
+                    <option value="kiambu">Kiambu</option>
+                    <option value="kikuyu">Kikuyu</option>
+                    <option value="kabete">Kabete</option>
+                    <option value="limuru">Limuru</option>
+                    <option value="lari">Lari</option>
+                </select>
+                </div>
+
+
+                <div class="flex flex-row items-center mb-4">
+                <label for="farmsize" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                   <b> Select Farm Size</b></label>
+                <select id="farmsize"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option selected>--Select Farm Size--</option>
+                    <option value="1">0-1 acre</option>
+                    <option value="2">2-3 acres</option>
+                    <option value="5">4-5 acres</option>
+                    <option value="6">6-8 acres</option>
+                </select>
+                </div>
+
+                <div class="flex flex-row items-center mb-4">
+                <label for="farmsize" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                  <b> Maize Seed Variety </b></label>
+                <select id="seedvariety"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option selected>--Select Seed Variety--</option>
+                    <option value="513">H513</option>
+                    <option value="530">H530</option>
+                    <option value="540">H540</option>
+                    <option value="580">H580</option>
+                    <option value="614">H614</option>
+                </select>
+                </div>
+
+                <p>Crop Nutrient Levels</p>
+
+
+                <div class="btn-field">
+                    <button type="submit" id="createProfileBtn">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 OrganiXpert. All rights reserved.</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+</body>
+
+</html>

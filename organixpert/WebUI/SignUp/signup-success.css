@@ -1,0 +1,26 @@
+.container {
+    margin: 0rem 0rem 0rem 0rem;
+    height: 100vh;
+    background: linear-gradient(rgba(33, 112, 9, 0.3), rgba(19, 204, 44, 0.308));
+    background-position: center;
+    background-size: cover;
+    position: relative;
+  }
+
+  .form-box h1 {
+    font-size: 30px;
+    margin-bottom: 60px;
+    color: #079c20;
+    position: relative;
+  }
+  .form-box h1::after {
+    content: "";
+    width: 30px;
+    height: 4px;
+    border-radius: 3px;
+    background: black;
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translatex(-50%);
+  }
