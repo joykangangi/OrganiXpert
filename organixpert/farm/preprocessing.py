@@ -4,8 +4,14 @@ from sklearn.preprocessing import MinMaxScaler
 
 def preprocess_before_inference(data):
     le = LabelEncoder()
-    data[:, 0:2] = le.fit_transform(data[:, 0:2])
+    data[:, [0, 2]] = le.fit_transform(data[:, [0, 2]].reshape(-1, 1)).flatten()
     scaler = MinMaxScaler()
     # Normalize N, P and K values to be between 0 and 1
-    data[:, 2] = scaler.fit_transform(data[:, 2])
+    data[:, 2] = scaler.fit_transform(data[:, 2].reshape(-1, 1)).flatten()
     return data
+
+
+
+
+
+    

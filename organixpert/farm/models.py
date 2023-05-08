@@ -22,6 +22,7 @@ class Farm(models.Model):
     soil_nitrogen_level = models.CharField(max_length=50, blank=True)
     soil_phosphorus_level = models.CharField(max_length=50, blank=True)
     soli_potassium_level = models.CharField(max_length=50, blank=True)
+    # soil_test_report = models.FileField(upload_to='farm/soil_test_report/', blank=True)
     
     def __str__(self):
         return self.farm_owner.username
