@@ -35,7 +35,9 @@ def farm_details_registration(request):
             farm_location=data['farm_location'],
             soil_type=data['soil_type'],
             crop_grown=data['crop_grown'],
-            seed_variety=data['seed_variety']
+            seed_variety=data['seed_variety'],
+            soil_nitrogen_level=data['soil_nitrogen_level'],
+            soil_phosphorus_level=data['soil_phosphorus_level']
         )
         serializer = FarmSerializer(farm_details, many=False)
         return Response(serializer.data)
@@ -84,7 +86,7 @@ def upload(request):
     potassium = str(round(float(potassium) * 2.24 * 0.4047, 2))
     farm = Farm.objects.get(farm_owner=user)
     farm.update(soil_nitrogen_level=nitrogen,
-                soil_phosphorus_level=phosphorus, soli_potassium_level=potassium)
+                soil_phosphorus_level=phosphorus, soil_potassium_level=potassium)
     return Response({'message': 'Soil test results uploaded successfully.'})
 
 @api_view(['GET'])
@@ -94,7 +96,7 @@ def get_recommendation(request):
     farm = Farm.objects.get(farm_owner=user)
     nitrogen = farm.soil_nitrogen_level
     phosphorus = farm.soil_phosphorus_level
-    potassium = farm.soli_potassium_level
+    potassium = farm.soil_potassium_level
     variety = farm.seed_variety
     soil_content = [nitrogen, phosphorus, potassium]
     crop = farm.crop_grown
@@ -114,17 +116,24 @@ def get_recommendation(request):
     data = [[soil_type, crop, nitrogen, potassium, phosphorus]]
     data = preprocess_before_inference(data)
     # load the model from disk using pickle module
-    model_path = os.path.abspath('../../ML_Development/Models')
-    os.chdir(model_path)
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    ml_dev_dir = os.path.abspath(os.path.join(current_dir, os.pardir, os.pardir, 'ML_Development'))
+    model_path = os.path.join(ml_dev_dir, 'Models')
+    if os.path.exists(model_path):
+        os.chdir(model_path)
+        print('Changed directory to {}'.format(model_path))
+    else:
+        print('Directory {} does not exist'.format(model_path))
     with open('Organic_Fertilizer_Recommender.pkl', 'rb') as file:
         model = pickle.load(file)
     # make predictions
+    print(data)
     prediction = model.predict(data)
     organic_fertilizers = ['Safi Biochar',
                            'Safi Sarvi Planting Fertilizer', 'Safi Sarvi Topper']
-    predicted_fertilizer = organic_fertilizers[prediction]
-    bags = determine_number_of_bags(
-        nutrient_requirements, soil_content, predicted_fertilizer)
+    predicted_fertilizer = organic_fertilizers[prediction[0]]
+    print(predicted_fertilizer)
+    bags = determine_number_of_bags(nutrient_requirements, soil_content, predicted_fertilizer)
     return Response({'fertilizer': predicted_fertilizer, 'bags': bags})
 
 

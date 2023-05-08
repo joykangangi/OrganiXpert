@@ -4,9 +4,9 @@ from django.contrib.auth.models import User
 class Crops(models.Model):
     crop_type = models.CharField(max_length=50, blank=True)
     seed_variety = models.CharField(max_length=50, blank=True)
-    nitrogen_requirement = models.CharField(max_length=50, blank=True)
-    phosphorus_requirement = models.CharField(max_length=50, blank=True)
-    potassium_requirement = models.CharField(max_length=50, blank=True)
+    nitrogen_requirement = models.IntegerField(null=True, blank=True)
+    phosphorus_requirement = models.IntegerField(null=True, blank=True)
+    potassium_requirement = models.IntegerField(null=True, blank=True)
     
     def __str__(self):
         return self.seed_variety
@@ -19,9 +19,9 @@ class Farm(models.Model):
     soil_type = models.CharField(max_length=50, blank=True)
     crop_grown = models.CharField(max_length=50, blank=True)
     seed_variety = models.CharField(max_length=50, blank=True)
-    soil_nitrogen_level = models.CharField(max_length=50, blank=True)
-    soil_phosphorus_level = models.CharField(max_length=50, blank=True)
-    soli_potassium_level = models.CharField(max_length=50, blank=True)
+    soil_nitrogen_level = models.IntegerField(null=True, blank=True)
+    soil_phosphorus_level = models.IntegerField(null=True, blank=True)
+    soil_potassium_level = models.IntegerField(null=True, blank=True)
     # soil_test_report = models.FileField(upload_to='farm/soil_test_report/', blank=True)
     
     def __str__(self):
