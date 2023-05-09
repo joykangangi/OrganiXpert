@@ -29,6 +29,7 @@ def farm_details_registration(request):
         return Response(content, status=status.HTTP_400_BAD_REQUEST)
     except Farm.DoesNotExist:
         data = request.data
+        print(data)
         farm_details = Farm.objects.create(
             farm_owner=request.user,
             farm_size=data['farm_size'],
@@ -37,7 +38,8 @@ def farm_details_registration(request):
             crop_grown=data['crop_grown'],
             seed_variety=data['seed_variety'],
             soil_nitrogen_level=data['soil_nitrogen_level'],
-            soil_phosphorus_level=data['soil_phosphorus_level']
+            soil_phosphorus_level=data['soil_phosphorus_level'],
+            soil_potassium_level=data['soil_potassium_level']
         )
         serializer = FarmSerializer(farm_details, many=False)
         return Response(serializer.data)
@@ -98,13 +100,13 @@ def get_recommendation(request):
     phosphorus = farm.soil_phosphorus_level
     potassium = farm.soil_potassium_level
     variety = farm.seed_variety
-    soil_content = [nitrogen, phosphorus, potassium]
+    soil_content = [round(float(nitrogen)), round(float(phosphorus)), round(float(potassium))]
     crop = farm.crop_grown
     soil_type = farm.soil_type
     crop_requirements = Crops.objects.filter(crop_type=crop, seed_variety=variety).first()
-    nitrogen_required = None
-    phosphorus_required = None
-    potassium_required = None
+    nitrogen_required = 0
+    phosphorus_required = 0
+    potassium_required = 0
     if crop_requirements:
         nitrogen_required = crop_requirements.nitrogen_requirement
         phosphorus_required = crop_requirements.phosphorus_requirement
@@ -134,7 +136,7 @@ def get_recommendation(request):
     predicted_fertilizer = organic_fertilizers[prediction[0]]
     print(predicted_fertilizer)
     bags = determine_number_of_bags(nutrient_requirements, soil_content, predicted_fertilizer)
-    return Response({'fertilizer': predicted_fertilizer, 'bags': bags})
+    return Response({'fertilizer': predicted_fertilizer, 'bags': round(bags) })
 
 
 class SoilTestReportViewSet(ViewSet):

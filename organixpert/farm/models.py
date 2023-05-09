@@ -19,9 +19,9 @@ class Farm(models.Model):
     soil_type = models.CharField(max_length=50, blank=True)
     crop_grown = models.CharField(max_length=50, blank=True)
     seed_variety = models.CharField(max_length=50, blank=True)
-    soil_nitrogen_level = models.IntegerField(null=True, blank=True)
-    soil_phosphorus_level = models.IntegerField(null=True, blank=True)
-    soil_potassium_level = models.IntegerField(null=True, blank=True)
+    soil_nitrogen_level = models.DecimalField(decimal_places=2, max_digits=5, null=True, blank=True)
+    soil_phosphorus_level = models.DecimalField(decimal_places=2, max_digits=5, null=True, blank=True)
+    soil_potassium_level = models.DecimalField(decimal_places=2, max_digits=5, null=True, blank=True)
     # soil_test_report = models.FileField(upload_to='farm/soil_test_report/', blank=True)
     
     def __str__(self):
