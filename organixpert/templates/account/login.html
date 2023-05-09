@@ -1,10 +1,132 @@
 {% extends "_base.html" %}
-
+{% block head_links %}
+<title>Login</title>
+{% endblock %} 
 {% block content %}
-  <h2>Login</h2>
-  <form method="post" action="{% url 'account_login' %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
-  </form>
+<style type="text/css">
+  * {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+  }
+  .container {
+    margin: 0rem 0rem 0rem 0rem;
+    height: 100vh;
+    background: linear-gradient(rgba(33, 112, 9, 0.3), rgba(19, 204, 44, 0.308));
+    background-position: center;
+    background-size: cover;
+    position: relative;
+  }
+  .form-box {
+    width: 90%;
+    max-width: 450px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 50px 60px 70px;
+   
+  }
+  .form-box h1 {
+    font-size: 30px;
+    margin-bottom: 60px;
+    color: #079c20;
+    position: relative;
+  }
+  .form-box h1::after {
+    content: "";
+    width: 30px;
+    height: 4px;
+    border-radius: 3px;
+    background: black;
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translatex(-50%);
+  }
+  .input-field{
+      background: rgb(224 224 224);
+      margin: 8px 8px;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      max-height: 55px;
+      transition: max-height 0.5s;
+      overflow: hidden;
+  }
+  input{
+    width: 100%;
+    background:transparent;
+    border: 0;
+    outline: 0;
+    padding: 18px 15px;
+}
+.input-field i{
+    margin-left: 15px;
+    color: black;
+}
+form p{
+    text-align: left;
+    font-size: 13px;
+}
+form p a{
+text-decoration: none;
+color: #3c00a0;
+}
+.btn-field{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.btn-field button{
+    flex-basis: 48%;
+    margin-top: 20px;
+    margin-left: 50px;
+    background: #0c8616;
+    color: #fff;
+    height: 40px;
+    border-radius: 20px;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    transition: 1s; 
+}
+.input-group{
+    height:auto;
+} 
+
+.btn-field button.disable{
+background: #eaeaea;
+color: #555;
+}
+#active{
+  display: none;
+}
+</style>
+<div class="container">
+  <div class="form-box">
+      <h1 id="title">Log In</h1>
+      <form action="{% url 'account_login' %}" method="post" id="login">
+        {% csrf_token %}
+          <div class="input-group">
+              <div class="input-field">
+                  {{ form.username.errors | safe }}
+                  <i class="fa-solid fa-user"></i>
+                  <input type="email" placeholder="Email" name="email" id="email">
+              </div>
+              <div class="input-field">
+                  {{ form.password.errors | safe }}
+                  <i class="fa-solid fa-lock"></i>
+                  <input type="password" placeholder="Password" name="password" id="password">
+              </div>
+              <p class="cont"><b> If you don't have an account <a href="{% url 'account_signup' %}">Click Here</a> to sign up.</b></p>
+          </div>
+          <div class="btn-field">
+              <button type="submit" id="loginBtn">Log In</button>
+          </div>
+      </form>
+  </div>
+</div>
 {% endblock %}
