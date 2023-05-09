@@ -6,6 +6,8 @@
 - [Pip](https://pypi.org/project/pip/)
 - [Virtualenv](https://virtualenv.pypa.io/en/latest/)
 - [SQLite3](https://www.sqlite.org/index.html)
+- [Django Rest Framework](https://www.django-rest-framework.org/)
+- [drf-yasg](https://drf-yasg.readthedocs.io/en/stable/)
 
 ### Installation
 1. Clone the repository
