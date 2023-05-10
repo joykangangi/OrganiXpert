@@ -129,12 +129,12 @@ def get_recommendation(request):
     with open('Organic_Fertilizer_Recommender.pkl', 'rb') as file:
         model = pickle.load(file)
     # make predictions
-    print(data)
+    # print(data)
     prediction = model.predict(data)
     organic_fertilizers = ['Safi Biochar',
                            'Safi Sarvi Planting Fertilizer', 'Safi Sarvi Topper']
     predicted_fertilizer = organic_fertilizers[prediction[0]]
-    print(predicted_fertilizer)
+    # print(predicted_fertilizer)
     bags = determine_number_of_bags(nutrient_requirements, soil_content, predicted_fertilizer)
     return Response({'fertilizer': predicted_fertilizer, 'bags': round(bags) })
 
